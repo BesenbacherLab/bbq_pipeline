@@ -1,0 +1,19 @@
+$schema: "http://json-schema.org/draft-04/schema#"
+
+description: an entry in the sample sheet
+properties:
+  sample:
+    type: string
+    description: sample name/id
+    uniqueItems: true
+  bam_file:
+    type: string
+    description: aligned reads in BAM format
+    uniqueItems: true
+  filter_bam_file:
+    type: string
+    description: aligned reads of the germline sample in BAM format
+
+required:
+  - sample
+  - bam_file

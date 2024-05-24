@@ -1,0 +1,186 @@
+$schema: "http://json-schema.org/draft-04/schema#"
+
+description: snakemake configuration file
+
+type: object
+
+properties:
+  samples:
+    type: string
+    description: path to a TSV file defining sample names and their corresponding BAM file paths
+
+  reference:
+    type: object
+    description: Details about the reference genome where reads have been aligned to
+    properties:
+    
+      fasta:
+        type: string
+        description: path to reference genome FASTA file
+      
+      twobit:
+        type: string
+        description: path to reference genome twoBit file
+      
+      split_region_length: 
+        type: integer
+        description: (reference genome) region size in base pairs for parallelization of k-mer counting and variant calling. Smaller regions will create more parallel jobs with shorter running times. 
+        default: 8000000
+
+      split_bed:
+        type: string
+        description: path to a BED file that specifies regions of interest for variant calling. This file can include coordinates of the full reference genome split to smaller regions for parallelization, or a subset of the genome that is of interest. Should be sorted by chrom (alphabetically) then pos (numrically).
+
+      exclude_bed: 
+        type: string
+        description: path to a BED file that specifies reference genome regions that should be excluded during k-mer counting and variant calling. . Should be sorted by chrom (alphabetically) then pos (numrically).
+
+      chr_list: 
+          type: array
+          description: list of chromosomes to be included for variant calling. If none are listed, all chromosomes will be included.
+    required:
+      - fasta
+
+  bbq:
+    type: object
+    description: full path of the installed BBQ exectuable and optional details for running BBQ.
+    properties:
+      global:
+        type: object
+        properties:
+
+          bbq_path:
+            type: string
+            description: full path of the BBQ executable
+
+          min_MQ:
+            type: integer
+            description: Phred-scaled minimum mapping quality of reads to be included.
+            default: 50
+          
+          max_mismatch: 
+            type: integer
+            description: maximum number of mismatches between the read and the reference genome.
+            default: 2
+          
+          min_enddist: 
+            type: integer
+            description: number of first and last read positions that will be ignored 
+            default: 5
+  
+      kmer_counting:
+        type: object
+        properties: 
+
+          radius: 
+            type: integer
+            description: defines length of k-mers. k = (radius*2) + 1
+            default: 3
+
+          min_depth: 
+            type: integer
+            description: minimum depth for a site to be considered as training data
+            default: 1
+
+          max_depth: 
+            type: integer
+            description: maximum depth for a site to be considered as training data
+            default: 5000
+
+          filter_min_depth:
+            type: integer
+            description: minimum depth in filter_bam_file for a site to be considered as training data
+            default: 1
+
+          filter_max_depth: 
+            type: integer
+            description: maximum depth in filter_bam_file for a site to be considered as training data
+            default: 5000
+
+      kmerpapa: 
+        type: object
+        properties: 
+
+          kmerpapa_method: 
+            type: string
+            description: algorithm to use for calculating kmer-papas
+            enum: ["greedy", "optimal"]
+            default: "greedy"
+
+          correction_type: 
+            type: string
+            description: should we compare bad variants to "good variants"(SNVs) or to "no variant" (homozygous ref sites)
+            enum: ["bad_vs_good", "bad_vs_no"]
+            default: "bad_vs_no"
+          
+          mean_type: 
+            type: string
+            description: mean type for calculating the error rate of concordant overlaps with different base qualities
+            enum: ["geometric", "harmonic"]
+            default: "geometric"
+
+          seed: 
+            type: integer
+            description: seed for numpy.random
+            default: 1
+
+      variant_calling:
+        type: object
+        properties: 
+
+          method: 
+            type: string
+            description: method used to calculate variant quality scores
+            enum: ["LR", "LR_with_MQ", "maxLR_with_MQ", "BF", "BF_with_MQ", "BF_with_MQ_and_Prior"]
+            default: "LR_with_MQ"
+          
+          cutoff:
+            type: number
+            description: only print variants with quality above the cutoff
+            default: 10
+
+          prior_N: 
+            type: integer
+            description: weight (as sample size) of the k-mer based prior on error rate
+            default: 50000
+          
+          min_BQ:
+            type: integer
+            description: minimum base quality to consider
+            default: 1
+          
+          filter_max_count: 
+            type: integer
+            description: Maximum number of times an alternative read is allowed to be seen in filer BAM file
+            default: 2
+
+          pop_vcf: 
+            type: string
+            description: population vcf with AF field
+
+          max_NM_diff: 
+            type: integer
+            description: maximum allowed difference in median number of mismatches for reads with alt alleles compared to reads with ref alleles
+            default: 2
+          
+          no_positional_update:
+            type: boolean
+            description: Do not make bayesian update of error rate but use rate only estimated from k-mers
+            
+      coverage_filtering:
+          type: object
+          properties: 
+
+            lower_q: 
+              type: number
+              description: Lower quantile (as a fraction), PASS calls with coverage below this quantile will be filtered out
+              default: 0.1
+
+            upper_q: 
+              type: number
+              description: Upper quantile (as a fraction), PASS calls with coverage above this quantile will be filtered out
+              default: 0.9
+
+required:
+  - samples
+  - reference
