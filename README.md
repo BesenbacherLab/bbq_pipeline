@@ -1,7 +1,7 @@
 # Snakemake workflow: Better Base Quality (BBQ)
 
 [![Snakemake](https://img.shields.io/badge/snakemake-≥6.3.0-brightgreen.svg)](https://snakemake.github.io)
-[![GitHub actions status](https://github.com/carmenoroperv/bbq_snakemake/workflows/Tests/badge.svg?branch=main)](https://github.com/carmenoroperv/bbq_snakemake/actions?query=branch%3Amain+workflow%3ATests)
+[![GitHub actions status](https://github.com/carmenoroperv/bbq_pipeline/workflows/Tests/badge.svg?branch=master)](https://github.com/carmenoroperv/bbq_pipeline/actions?query=branch%master+workflow%3ATests)
 
 
 ## Description
@@ -11,7 +11,7 @@ Snakemake workflow for running the Better Base Quality (BBQ) tool for somatic va
 
 ## Usage
 
-The usage of this workflow is also described in the [Snakemake Workflow Catalog](https://snakemake.github.io/snakemake-workflow-catalog/?usage=carmenoroperv/bbq_snakemake). (Will be published once the repo is public)
+The usage of this workflow is also described in the [Snakemake Workflow Catalog](https://snakemake.github.io/snakemake-workflow-catalog/?usage=carmenoroperv/bbq_pipeline). (Will be published once the repo is public)
 
 ### Step 1: Install snakemake
 
@@ -23,7 +23,7 @@ Given that Mamba is installed, run:
 mamba create -c conda-forge -c bioconda --name snakemake 'snakemake>=8'
 ```
 
-to install Snakemake in an isolated environment. Activated the environment via: 
+to install Snakemake in an isolated environment. Activate the environment via: 
 
 ```
 conda activate snakemake
@@ -34,19 +34,19 @@ conda activate snakemake
 Download and extract the repository: 
 
 ```
-git clone https://github.com/carmenoroperv/bbq_snakemake.git && cd bbq_snakemake
+git clone https://github.com/carmenoroperv/bbq_pipeline.git && cd bbq_pipeline
 ```
 
 ### Step 3: Configure workflow and install BBQ
 
 #### Workflow confifuration
-To configure this workflow, modify config/config.yaml and samples.tsv according to your needs, following the explanations provided [here](https://github.com/carmenoroperv/bbq_snakemake/tree/main/config).
+To configure this workflow, modify config/config.yaml and samples.tsv according to your needs, following the explanations provided [here](https://github.com/carmenoroperv/bbq_pipeline/tree/master/config).
 
 #### BBQ installation
 The source code and instructions for installing BBQ can be found [here](https://github.com/besenbacher/BetterBaseQuals/tree/main).
 If you have not installed BBQ before running the workflow, BBQ will be installed to the working directory during the workflow execution. 
 
-If you have already installed BBQ, you can provide a full path to the executable in the `config/config.yaml` by specifiying the `bbq_path` parameter under the `bbq/global` property. 
+If you have already installed BBQ, you can provide a full path to the executable in the `config/config.yaml` by specifiying the `bbq_path` key under the `bbq/global` property. 
 
 ### Step 4: Run workflow 
 
@@ -62,7 +62,7 @@ You can run the workflow locally with:
 snakemake --software-deployment-method conda --cores all
 ```
 
-For cluster execution set up a profile configuration. An example workflow profile configuration for slurm is provided [here](https://github.com/carmenoroperv/bbq_snakemake/tree/main/workflow/profiles/default/config.yaml). To use the example profile, adjust the snakemake command line parameters to your needs and install the [snakemake slurm executor plugin](https://snakemake.github.io/snakemake-plugin-catalog/plugins/executor/slurm.html) with `pip install snakemake-executor-plugin-slurm`. 
+For cluster execution set up a profile configuration. An example workflow profile configuration for slurm is provided [here](https://github.com/carmenoroperv/bbq_pipeline/tree/master/workflow/profiles/default/config.yaml). To use the example profile, adjust the snakemake command line parameters to your needs and install the [snakemake slurm executor plugin](https://snakemake.github.io/snakemake-plugin-catalog/plugins/executor/slurm.html) with `pip install snakemake-executor-plugin-slurm`. 
 A cluster account is specified in the example profile as an environment variable. Set the account name as an environment variable by running `export ACCOUNT_NAME=<your_account_name>` or modify the profile config file to include your account name directly.
 
 After setting up the profile configuration, you can run snakemake with a workflow specific profile with: 
