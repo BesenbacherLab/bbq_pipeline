@@ -2,12 +2,11 @@ samples: config/samples.tsv
 
 reference: 
     fasta: "resources/homo_sapiens_GRCh38_112.fasta"
-    twobit: "resources/homo_sapiens_GRCh38_112.2bit"
     split_region_length: 8000000
+    chr_list: ["17"]
     
 bbq:
     global:
-        bbq_path: "/home/user/BetterBaseQuals"
         min_MQ: 50
         max_mismatch: 2
         min_enddist: 5
