@@ -1,0 +1,26 @@
+samples: config/samples.tsv
+
+reference: 
+    fasta: "resources/homo_sapiens_GRCh38_112.fasta"
+    twobit: "resources/homo_sapiens_GRCh38_112.2bit"
+    split_region_length: 8000000
+    
+bbq:
+    global:
+        bbq_path: "/home/user/BetterBaseQuals"
+        min_MQ: 50
+        max_mismatch: 2
+        min_enddist: 5
+    kmer_counting: 
+        radius: 3
+    kmerpapa: 
+        correction_type: "bad_vs_no"
+        kmerpapa_method: "greedy"
+        mean_type: "geometric"
+    variant_calling:
+        method: "LR_with_MQ"
+        max_NM_diff: 2
+        prior_N: 50000
+    coverage_filtering:
+        lower_q: 0.1
+        upper_q: 0.9
