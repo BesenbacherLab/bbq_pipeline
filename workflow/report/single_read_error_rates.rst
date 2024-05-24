@@ -1,0 +1,1 @@
+Phred scaled predicted error rates of {{ (snakemake.config["bbq"]["kmer_counting"]["radius"]*2)+1 }}-mer patterns. The patterns with the highest and lowest error rates are indicated with text labels. Vertical lines indicate the mean error rates.

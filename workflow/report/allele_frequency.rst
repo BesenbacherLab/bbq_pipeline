@@ -1,0 +1,1 @@
+Allele frequency distribution of called variants with PASS filter. Only variants with allele frequency between 0 and 0.5 are plotted. 

@@ -1,0 +1,1 @@
+Number of variants with PASS filter called after coverage based filtering. 

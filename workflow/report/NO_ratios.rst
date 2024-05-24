@@ -1,0 +1,1 @@
+Ratio between the rate of alternative alleles seen in non-overlapping and concordant overlapping positions (NO-ratio). The data points indicate the NO-ratios of {{ (snakemake.config["bbq"]["kmer_counting"]["radius"]*2)+1 }}-mer patterns. Black horizontal lines show the mean NO-ratios.
