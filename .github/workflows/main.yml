@@ -11,17 +11,17 @@ jobs:
   Formatting:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-      - uses: actions/checkout@v4
+    - name: Checkout
+    - uses: actions/checkout@v4
       with:
         fetch-depth: 0
-      - name: Formatting
-        uses: github/super-linter@v6.5.0
-        env:
-          VALIDATE_ALL_CODEBASE: false
-          DEFAULT_BRANCH: master
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          VALIDATE_SNAKEMAKE_SNAKEFMT: true
+    - name: Formatting
+      uses: github/super-linter@v6.5.0
+      env:
+        VALIDATE_ALL_CODEBASE: false
+        DEFAULT_BRANCH: master
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        VALIDATE_SNAKEMAKE_SNAKEFMT: true
 
   Linting:
     runs-on: ubuntu-latest
