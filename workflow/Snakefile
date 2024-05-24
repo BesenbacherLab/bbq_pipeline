@@ -1,0 +1,24 @@
+#localrules: install_bbq_poetry
+
+include: "rules/common.smk" 
+
+
+##### Target rules #####
+rule all:
+    input: expand("results/{sample}/kmers/kmers.txt", sample = samples.index.tolist()),
+           expand("results/{sample}/variants/variants_cov_filter_PASS.vcf", sample = samples.index.tolist()),
+           expand("results/{sample}/plots/allele_frequency.png", sample = samples.index.tolist()),  
+           expand("results/{sample}/plots/coverage.png", sample = samples.index.tolist()), 
+           expand("results/{sample}/plots/mut_type_counts.png", sample = samples.index.tolist()), 
+           expand("results/{sample}/plots/single_read_error_rates.png", sample = samples.index.tolist()),
+           expand("results/{sample}/plots/NO_ratios.png", sample = samples.index.tolist()), 
+            
+
+##### Modules #####
+include: "rules/install_bbq.smk"
+include: "rules/reference.smk"
+include: "rules/count_kmers.smk"
+include: "rules/train_model.smk"
+include: "rules/call_variants.smk"
+include: "rules/filter_variants.smk"
+
