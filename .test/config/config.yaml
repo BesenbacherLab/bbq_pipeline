@@ -1,0 +1,24 @@
+samples: config/samples.tsv
+
+reference: 
+    fasta: "data/ref/homo_sapiens_GRCh38_112.chr17.fasta"
+
+bbq:
+    global: 
+        max_mismatch: 2
+        min_MQ: 50
+    kmer_counting: 
+        radius: 3
+        min_depth: 1
+        max_depth: 10000
+    kmerpapa: 
+        correction_type: "bad_vs_no"
+        kmerpapa_method: "greedy"
+        mean_type: "geometric"
+    variant_calling:
+        method: "LR_with_MQ"
+        max_NM_diff: 2
+        prior_N: 50000
+    coverage_filtering:
+        lower_q: 0.1
+        upper_q: 0.9
