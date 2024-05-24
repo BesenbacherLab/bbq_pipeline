@@ -44,7 +44,7 @@ def lookup_bbq_path():
 
 def bbq_installation_check(wildcards):
     if "bbq" in config and "global" in config["bbq"] and "bbq_path" in config["bbq"]["global"]:
-        return lookup_bbq_path() + "/pyproject.toml",
+        return "/".join(lookup_bbq_path().split("/")[:-1]) + "/activate_this.py"
     else: 
         return "results/bbq_path.txt"
 
@@ -116,8 +116,15 @@ def lookup_config(prop, step, param):
     return param_str
     
 def check_filter_bam(wildcards):
-    if "filter_bam_file" in samples.columns and not np.isnan(samples.loc[wildcards.sample]["filter_bam_file"]):
-        return "--filter_bam_file {}".format(samples.loc[wildcards.sample]["filter_bam_file"])
+    if "filter_bam_file" in samples.columns: 
+        try: 
+            nan_value = np.isnan(samples.loc[wildcards.sample]["filter_bam_file"])
+        except TypeError: 
+            nan_value = False
+        except WorkflowError:
+            nan_value = False
+        if not nan_value:
+            return "--filter_bam_file {}".format(samples.loc[wildcards.sample]["filter_bam_file"])
     else:
         return ""
     
@@ -130,7 +137,6 @@ def get_global_bbq_params(extra):
 
 def get_count_kmer_params(wildcards):
     extra = ""
-    extra += check_filter_bam(wildcards)
     
     if "bbq" in config:
         extra += get_global_bbq_params(extra)
@@ -140,6 +146,7 @@ def get_count_kmer_params(wildcards):
         
     extra += lookup_config("reference", "", "exclude_bed")
     extra += get_region_str(wildcards)
+    extra += check_filter_bam(wildcards)
 
     return extra
 
@@ -154,7 +161,6 @@ def get_kmerpapa_params():
 
 def get_var_calling_params(wildcards):
     extra = ""
-    extra += check_filter_bam(wildcards)
 
     if "bbq" in config:
         extra += get_global_bbq_params(extra)
@@ -167,6 +173,7 @@ def get_var_calling_params(wildcards):
     
     extra += lookup_config("reference", "", "exclude_bed")
     extra += get_region_str(wildcards)
+    extra += check_filter_bam(wildcards)
 
     return extra
 
