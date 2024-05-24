@@ -63,6 +63,7 @@ snakemake --software-deployment-method conda --cores all
 ```
 
 For cluster execution set up a profile configuration. An example workflow profile configuration for slurm is provided [here](https://github.com/carmenoroperv/bbq_pipeline/tree/master/workflow/profiles/default/config.yaml). To use the example profile, adjust the snakemake command line parameters to your needs and install the [snakemake slurm executor plugin](https://snakemake.github.io/snakemake-plugin-catalog/plugins/executor/slurm.html) with `pip install snakemake-executor-plugin-slurm`. 
+
 A cluster account is specified in the example profile as an environment variable. Set the account name as an environment variable by running `export ACCOUNT_NAME=<your_account_name>` or modify the profile config file to include your account name directly.
 
 After setting up the profile configuration, you can run snakemake with a workflow specific profile with: 
@@ -80,6 +81,3 @@ After running the workflow, you can automatically generate an HTML report with a
 ```
 snakemake --report report.html
 ```
-
-## TO DO:
-1. create a split_bed for test data 
