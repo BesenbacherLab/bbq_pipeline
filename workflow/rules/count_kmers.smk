@@ -13,6 +13,8 @@ rule count_kmers:
         runtime=lambda wildcards, attempt: attempt * 60 * 6,
     log:
         "logs/{sample}/count_kmers/{region}.out",
+    conda: 
+        "../envs/poetry1_8_3.yaml",
     shell:
         "{params.bbq} count --bam_file {input.bam} --twobit_file {input.twobit} --output_file_kmers {output} {params.extra} 2> {log}"
 # mkdir results/{wildcards.sample}/kmers/ && 

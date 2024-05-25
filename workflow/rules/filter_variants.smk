@@ -11,6 +11,8 @@ rule coverage_filter_PASS_variants:
         runtime=lambda wildcards, attempt: attempt * 60,
     log:
         "logs/{sample}/filter_variants/coverage_filter_PASS_variants.out",
+    conda: 
+        "../envs/poetry1_8_3.yaml",
     shell:
         "{params.bbq} filter_calls --vcf_file {input.vcf} --outfile {output} {params.extra} 2> {log}"
 
@@ -24,6 +26,8 @@ rule filter_PASS_calls:
         runtime=lambda wildcards, attempt: attempt * 60,
     log:
         "logs/{sample}/filter_variants/filter_PASS_calls.out",
+    conda: 
+        "../envs/poetry1_8_3.yaml",
     shell:
         """awk '{{ if ($7 == "PASS") {{ print }} }}' {input} > {output} 2> {log}"""
 

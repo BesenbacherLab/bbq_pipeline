@@ -12,6 +12,8 @@ rule train_kmerpapa:
         runtime=lambda wildcards, attempt: attempt * 60 * 6,
     log:
         "logs/{sample}/train_kmerpapa.out",
+    conda: 
+        "../envs/poetry1_8_3.yaml",
     shell:
         "{params.bbq} train_only --input_file_kmers {input.kmers} --output_file_kmerpapa {output.kmerpapa} --output_file_EQ {output.no_ratio} --EQ_pat {params.extra} 2> {log}"
 

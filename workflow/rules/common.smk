@@ -44,7 +44,8 @@ def lookup_bbq_path():
 
 def bbq_installation_check(wildcards):
     if "bbq" in config and "global" in config["bbq"] and "bbq_path" in config["bbq"]["global"]:
-        return "/".join(lookup_bbq_path().split("/")[:-1]) + "/activate_this.py"
+        poetry_filename = "activate_this.py"
+        return f"{"/".join(lookup_bbq_path().split("/")[:-1])}/{poetry_filename}"
     else: 
         return "results/bbq_path.txt"
 
