@@ -6,6 +6,9 @@ on:
   pull_request:
     branches: [ master ]
 
+env:
+  ACCOUNT_NAME: cluster_account_name
+
 jobs:
   Formatting:
     runs-on: ubuntu-latest
