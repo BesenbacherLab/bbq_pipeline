@@ -5,7 +5,7 @@ To configure this workflow, modify ``config/config.yaml`` according to your need
 
 A complete list of accepted keys with default values, expected types and human readable descriptions is available in schemas.
 
-## Reference genome: 
+### Reference genome
 As a requirement, you need to provide a path to the reference genome FASTA file.
 The workflow will then create a twoBit file of the reference genome that is used by several BBQ commands. If you already have the reference genome in the twoBit format, you can provide a path to it using the ``twobit`` key.
 
@@ -13,7 +13,7 @@ By default the full reference genome is used for the analysis. You can specify r
 
 To speed up the k-mer counting and variant calling, the reference genome is split non-overlapping regions of 8Mb by default. The region length can be changed by adjusting the ``split_region_length`` parameter. 
 
-## BBQ
+### BBQ
 All tunable parameters of BBQ are set to the default values by the config schema (see ../workflow/schemas/config.schema.yaml). To modify parameter values, specify the intended key,value pair in the ``config/config.yaml``. 
 
 # Sample and unit sheet

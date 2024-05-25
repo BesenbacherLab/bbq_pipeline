@@ -44,7 +44,7 @@ To configure this workflow, modify config/config.yaml and samples.tsv according 
 
 #### BBQ installation
 The source code and instructions for installing BBQ can be found [here](https://github.com/besenbacher/BetterBaseQuals/tree/main).
-If you have not installed BBQ before running the workflow, BBQ will be installed to the working directory during the workflow execution. 
+If you have not installed BBQ before running the workflow, BBQ will be installed to the working directory during the execution. 
 
 If you have already installed BBQ, you can provide a full path to the executable in the `config/config.yaml` by specifiying the `bbq_path` key under the `bbq/global` property. 
 
