@@ -31,7 +31,7 @@ jobs:
       with:
         directory: .test
         snakefile: workflow/Snakefile
-        args: "--configfile .test/config/config.yaml --lint"
+        args: "--configfile .test/config/config.yaml --executor local --lint"
 
   Testing:
     runs-on: ubuntu-latest
@@ -47,7 +47,7 @@ jobs:
       with:
         directory: .test
         snakefile: workflow/Snakefile
-        args: "--configfile .test/config/config.yaml --software-deployment-method conda --show-failed-logs --cores 1 --conda-cleanup-pkgs cache --all-temp"
+        args: "--configfile .test/config/config.yaml --executor local --software-deployment-method conda --show-failed-logs --cores 1 --conda-cleanup-pkgs cache --all-temp"
     - name: Test report
       uses: snakemake/snakemake-github-action@v1.25.1
       with:
