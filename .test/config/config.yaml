@@ -2,9 +2,11 @@ samples: config/samples.tsv
 
 reference: 
     fasta: "data/ref/homo_sapiens_GRCh38_112.chr17.fasta"
+    twobit: "data/ref/homo_sapiens_GRCh38_112.chr17.2bit"
 
 bbq:
     global: 
+        chr_list: ["17"]
         max_mismatch: 2
         min_MQ: 50
     kmer_counting: 
