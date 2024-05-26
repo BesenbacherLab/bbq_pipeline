@@ -24,14 +24,14 @@ validate(samples, schema="../schemas/samples.schema.yaml")
 ref_dict = config["reference"]
 if "twobit" not in ref_dict:
     fasta = ref_dict["fasta"]
-    twobit_prefix = "".join(os.path.basename(fasta).split(".")[:-1])
+    twobit_prefix = ".".join(os.path.basename(fasta).split(".")[:-1])
     twobit = f"resources/{twobit_prefix}.2bit"
 else:
     twobit = ref_dict["twobit"]
 
 if "split_bed" not in ref_dict:
     region_length = ref_dict["split_region_length"]
-    twobit_prefix = "".join(os.path.basename(twobit).split(".")[:-1])
+    twobit_prefix = ".".join(os.path.basename(twobit).split(".")[:-1])
     ref_split_bed = f"resources/{twobit_prefix}.bed"
 else:
     ref_split_bed = ref_dict["split_bed"]
