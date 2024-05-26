@@ -44,10 +44,8 @@ jobs:
     steps:
     - name: Checkout test
       uses: actions/checkout@v4
-
-    - name: Setup credentials to access private repositories
-      run: git config --global url.https://${{ secrets.GITHUB_TOKEN }}@github.com/.insteadOf https://github.com/
     - name: Test workflow
+      run: git config --global url.https://${{ secrets.GITHUB_TOKEN }}@github.com/.insteadOf https://github.com/
       uses: snakemake/snakemake-github-action@v1.25.1
       with:
         directory: .test
