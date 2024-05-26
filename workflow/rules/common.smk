@@ -150,6 +150,8 @@ def check_filter_bam(wildcards):
             return "--filter_bam_file {}".format(
                 samples.loc[wildcards.sample]["filter_bam_file"]
             )
+        else: 
+            return ""
     else:
         return ""
 
