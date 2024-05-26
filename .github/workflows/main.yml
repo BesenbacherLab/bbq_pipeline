@@ -46,7 +46,7 @@ jobs:
       uses: actions/checkout@v4
 
     - name: Setup credentials to access private repositories
-      run: git config --global url.https://${{ secrets.ACCESS_BBQ_THROUGH_PIPELINE }}@github.com/.insteadOf https://github.com/
+      run: git config --global url.https://${{ secrets.GITHUB_TOKEN }}@github.com/.insteadOf https://github.com/
     - name: Test workflow
       uses: snakemake/snakemake-github-action@v1.25.1
       with:
