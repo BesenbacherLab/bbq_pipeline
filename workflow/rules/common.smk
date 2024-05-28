@@ -139,19 +139,9 @@ def lookup_config(prop, step, param):
 
 def check_filter_bam(wildcards):
     if "filter_bam_file" in samples.columns:
-        nan_value = False
-        try:
-            nan_value = np.isnan(samples.loc[wildcards.sample]["filter_bam_file"])
-        except TypeError:
-            nan_value = True
-        except WorkflowError:
-            nan_value = True
-        if not nan_value:
-            return "--filter_bam_file {}".format(
-                samples.loc[wildcards.sample]["filter_bam_file"]
+        return "--filter_bam_file {}".format(
+            samples.loc[wildcards.sample]["filter_bam_file"]
             )
-        else:
-            return ""
     else:
         return ""
 

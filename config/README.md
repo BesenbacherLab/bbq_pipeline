@@ -19,4 +19,5 @@ All tunable parameters of BBQ are set to the default values by the config schema
 # Sample and unit sheet
 
 You can specify the samples you want to call variants for in the `config/samples.tsv` file. 
-As a requirement, sample name and bam_file need to be specified. Optionally, you can add the filter_bam_file path, which represents the germline sequence of the respective sample and is used to exclude germline variants during variant calling. 
+As a requirement, sample name and bam_file need to be specified. 
+Optionally, you can add the ``filter_bam_file`` column, where you can specify the path to the aligned germline sequence data of the respective sample. The germline data will then be used to exclude germline variants during variant calling. 
