@@ -152,7 +152,7 @@ properties:
           filter_max_count: 
             type: integer
             description: Maximum number of times an alternative read is allowed to be seen in filer BAM file
-            default: 2
+            default: 0
 
           pop_vcf: 
             type: string
