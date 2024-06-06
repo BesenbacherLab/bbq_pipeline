@@ -22,5 +22,5 @@ bbq:
         max_NM_diff: 2
         prior_N: 50000
     coverage_filtering:
-        lower_q: 0.1
-        upper_q: 0.9
+        lower_q: 0.05
+        upper_q: 0.95

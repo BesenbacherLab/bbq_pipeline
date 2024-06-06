@@ -174,12 +174,12 @@ properties:
             lower_q: 
               type: number
               description: Lower quantile (as a fraction), PASS calls with coverage below this quantile will be filtered out
-              default: 0.1
+              default: 0.05
 
             upper_q: 
               type: number
               description: Upper quantile (as a fraction), PASS calls with coverage above this quantile will be filtered out
-              default: 0.9
+              default: 0.95
 
 required:
   - samples
