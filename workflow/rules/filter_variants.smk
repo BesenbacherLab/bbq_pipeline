@@ -59,7 +59,7 @@ rule plot_AF_coverage_muttypes:
             labels={"Figure": "Coverage"},
         ),
     resources:
-        mem_mb=lambda wildcards, attempt: attempt * 1024 * 10,
+        mem_mb=lambda wildcards, attempt: attempt * 1024 * 50,
         runtime=lambda wildcards, attempt: attempt * 60,
     log:
         "logs/{sample}/plot_AF_coverage_muttypes.out",
