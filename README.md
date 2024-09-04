@@ -23,7 +23,7 @@ Given that Mamba is installed, run:
 mamba create -c conda-forge -c bioconda --name snakemake 'snakemake>=8'
 ```
 
-to install Snakemake in an isolated environment. If you need to use conda, `--conda-frontend conda` flag needs to be added to the snakemake commands given below. 
+to install Snakemake in an isolated environment. If you need to use conda instead of mamba, `--conda-frontend conda` flag needs to be added to the snakemake commands given below. 
 
 Activate the environment via: 
 
