@@ -1,7 +1,7 @@
 samples: config/samples.tsv
 
 reference: 
-    fasta: "resources/homo_sapiens_GRCh38_112.fasta"
+    fasta: ".test/data/ref/homo_sapiens_GRCh38_112.chr17.fasta"
     split_region_length: 8000000
     chr_list: ["17"]
     
