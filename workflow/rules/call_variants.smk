@@ -33,4 +33,6 @@ rule combine_variant_regions:
     conda:
         "../envs/bbq0_2_0.yaml"
     shell:
-        """cat {params.input_list} > {output} 2> {log}"""
+        """
+        cat {params.input_list} > {output} 2> {log}
+        """
