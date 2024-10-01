@@ -6,7 +6,6 @@ rule call_variants:
     output:
         temp("results/{sample}/variants/{region}_variants.vcf"),
     params:
-        bbq=BBQ_path,
         extra=get_var_calling_params,
     resources:
         mem_mb=lambda wildcards, attempt: attempt * 1024 * 4,
@@ -14,9 +13,9 @@ rule call_variants:
     log:
         "logs/{sample}/call_variants/{region}.out",
     conda:
-        "../envs/poetry1_8_3.yaml"
+        "../envs/bbq0_2_0.yaml"
     shell:
-        "{params.bbq} call_only --bam_file {input.bam} --twobit_file {input.twobit} --input_file_kmerpapa {input.kmerpapa} --outfile {output} {params.extra} 2> {log}"
+        "bbq call_only --bam_file {input.bam} --twobit_file {input.twobit} --input_file_kmerpapa {input.kmerpapa} --outfile {output} {params.extra} 2> {log}"
 
 
 rule combine_variant_regions:
@@ -32,6 +31,6 @@ rule combine_variant_regions:
     log:
         "logs/{sample}/call_variants/combine_variant_regions.out",
     conda:
-        "../envs/poetry1_8_3.yaml"
+        "../envs/bbq0_2_0.yaml"
     shell:
         """cat {params.input_list} > {output} 2> {log}"""

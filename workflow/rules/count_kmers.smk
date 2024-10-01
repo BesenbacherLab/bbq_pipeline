@@ -1,12 +1,10 @@
 rule count_kmers:
     input:
-        bbq_installation_check,
         unpack(get_bam),
         twobit=twobit,
     output:
         temp("results/{sample}/kmers/{region}_kmers.txt"),
     params:
-        bbq=BBQ_path,
         extra=get_count_kmer_params,
     resources:
         mem_mb=lambda wildcards, attempt: attempt * 1024 * 4,
@@ -14,9 +12,9 @@ rule count_kmers:
     log:
         "logs/{sample}/count_kmers/{region}.out",
     conda:
-        "../envs/poetry1_8_3.yaml"
+        "../envs/bbq0_2_0.yaml"
     shell:
-        "{params.bbq} count --bam_file {input.bam} --twobit_file {input.twobit} --output_file_kmers {output} {params.extra} 2> {log}"
+        "bbq count --bam_file {input.bam} --twobit_file {input.twobit} --output_file_kmers {output} {params.extra} 2> {log}"
 
 
 rule combine_counted_kmers:

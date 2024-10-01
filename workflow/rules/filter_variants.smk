@@ -4,7 +4,6 @@ rule coverage_filter_PASS_variants:
     output:
         "results/{sample}/variants/variants_cov_filter.vcf",
     params:
-        bbq=BBQ_path,
         extra=get_coverage_filter_params(),
     resources:
         mem_mb=lambda wildcards, attempt: attempt * 1024 * 2,
@@ -12,9 +11,9 @@ rule coverage_filter_PASS_variants:
     log:
         "logs/{sample}/filter_variants/coverage_filter_PASS_variants.out",
     conda:
-        "../envs/poetry1_8_3.yaml"
+        "../envs/bbq0_2_0.yaml"
     shell:
-        "{params.bbq} filter_calls --vcf_file {input.vcf} --outfile {output} {params.extra} 2> {log}"
+        "bbq filter_calls --vcf_file {input.vcf} --outfile {output} {params.extra} 2> {log}"
 
 
 rule filter_PASS_calls:
@@ -28,7 +27,7 @@ rule filter_PASS_calls:
     log:
         "logs/{sample}/filter_variants/filter_PASS_calls.out",
     conda:
-        "../envs/poetry1_8_3.yaml"
+        "../envs/bbq0_2_0.yaml"
     shell:
         """awk '{{ if ($7 == "PASS") {{ print }} }}' {input} > {output} 2> {log}"""
 

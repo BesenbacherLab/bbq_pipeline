@@ -5,7 +5,6 @@ rule train_kmerpapa:
         kmerpapa="results/{sample}/kmerpapa/kmerpapa_model.txt",
         no_ratio="results/{sample}/kmerpapa/no_ratios.txt",
     params:
-        bbq=BBQ_path,
         extra=get_kmerpapa_params(),
     resources:
         mem_mb=lambda wildcards, attempt: attempt * 1024 * 4,
@@ -13,9 +12,9 @@ rule train_kmerpapa:
     log:
         "logs/{sample}/train_kmerpapa.out",
     conda:
-        "../envs/poetry1_8_3.yaml"
+        "../envs/bbq0_2_0.yaml"
     shell:
-        "{params.bbq} train_only --input_file_kmers {input.kmers} --output_file_kmerpapa {output.kmerpapa} --output_file_EQ {output.no_ratio} --EQ_pat {params.extra} 2> {log}"
+        "bbq train_only --input_file_kmers {input.kmers} --output_file_kmerpapa {output.kmerpapa} --output_file_EQ {output.no_ratio} {params.extra} 2> {log}"
 
 
 rule plot_error_rates_and_NO_ratio:

@@ -49,10 +49,6 @@ properties:
         type: object
         properties:
 
-          bbq_path:
-            type: string
-            description: full path of the BBQ executable
-
           min_MQ:
             type: integer
             description: Phred-scaled minimum mapping quality of reads to be included.
@@ -116,7 +112,7 @@ properties:
           mean_type: 
             type: string
             description: mean type for calculating the error rate of concordant overlaps with different base qualities
-            enum: ["geometric", "harmonic"]
+            enum: ["geometric", "harmonic", "arithmetic"]
             default: "geometric"
 
           seed: 

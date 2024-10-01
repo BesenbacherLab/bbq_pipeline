@@ -40,39 +40,6 @@ else:
 ##### Helper functions #####
 
 
-def lookup_bbq_path():
-    try:
-        config_bbq = lookup(dpath=f"bbq/global/bbq_path", within=config)
-    except LookupError:
-        config_bbq = ""
-    except WorkflowError:
-        config_bbq = ""
-    return config_bbq
-
-
-def bbq_installation_check(wildcards):
-    if (
-        "bbq" in config
-        and "global" in config["bbq"]
-        and "bbq_path" in config["bbq"]["global"]
-    ):
-        poetry_env_path = lookup_bbq_path()[:-3]
-        poetry_filename = "activate_this.py"
-        return f"{poetry_env_path}{poetry_filename}"
-    else:
-        return "results/bbq_path.txt"
-
-
-def BBQ_path(wildcards):
-    installation_path = "results/bbq_path.txt"
-    if exists(installation_path):
-        with open(installation_path) as f:
-            BBQ = f.readline().strip()
-    else:
-        BBQ = lookup_bbq_path()
-    return BBQ
-
-
 def get_target_chr():
     # select only a set of chromosomes, if chrom list is given in config else include all chrom
     if "chr_list" in config["reference"]:

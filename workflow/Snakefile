@@ -26,7 +26,6 @@ rule all:
 
 
 ##### Modules #####
-include: "rules/install_bbq.smk"
 include: "rules/reference.smk"
 include: "rules/count_kmers.smk"
 include: "rules/train_model.smk"
