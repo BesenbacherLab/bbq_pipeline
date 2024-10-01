@@ -108,7 +108,7 @@ def check_filter_bam(wildcards):
     if "filter_bam_file" in samples.columns:
         return "--filter_bam_file {}".format(
             samples.loc[wildcards.sample]["filter_bam_file"]
-            )
+        )
     else:
         return ""
 
