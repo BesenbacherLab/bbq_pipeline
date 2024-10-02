@@ -1,7 +1,7 @@
 # Snakemake workflow: Better Base Quality (BBQ)
 
 [![Snakemake](https://img.shields.io/badge/snakemake-≥8.0.0-brightgreen.svg)](https://snakemake.github.io)
-[![GitHub actions status](https://github.com/carmenoroperv/bbq_pipeline/workflows/Tests/badge.svg?branch=master)](https://github.com/carmenoroperv/bbq_pipeline/actions/workflows/main.yaml)
+[![GitHub actions status](https://github.com/carmenoroperv/bbq_pipeline/workflows/Tests/badge.svg?branch=master)](https://github.com/carmenoroperv/bbq_pipeline/actions/workflows/Tests)
 
 ## Description
 
