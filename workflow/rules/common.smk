@@ -62,7 +62,7 @@ def get_regions(wildcards):
     with open(ref_split_bed) as f:
         for line in f:
             chrom, start, end = line.split()[0:3]
-            if chrom in target_chr or target_chr[0] == "all":
+            if str(chrom) in target_chr or target_chr[0] == "all":
                 regions.append(f"{chrom}:{start}-{end}")
     return regions
 
