@@ -116,8 +116,7 @@ def check_filter_bam(wildcards):
 def get_global_bbq_params(extra):
     if "global" in config["bbq"]:
         for param in config["bbq"]["global"]:
-            if param != "bbq_path":
-                extra += lookup_config("bbq", "global", param)
+            extra += lookup_config("bbq", "global", param)
     return extra
 
 
