@@ -60,4 +60,4 @@ jobs:
       with:
         directory: .test
         snakefile: workflow/Snakefile
-        args: "--directory .test --report report.html"
+        args: "--directory .test --executor local --software-deployment-method conda --report report.html"
