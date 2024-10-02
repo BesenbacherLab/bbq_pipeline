@@ -35,4 +35,4 @@ rule combine_variant_regions:
     shell:
         """
         cat {params.input_list} > {output} 2> {log}
-        """
+    """
