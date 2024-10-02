@@ -1,9 +1,9 @@
 channels:
-  - anaconda
+  - bioconda
   - conda-forge
   - defaults
 dependencies:
   - python=3.10.15
-  - pip=23.3
+  - pip=24.2
   - pip:
       - betterbasequals==0.2.0
