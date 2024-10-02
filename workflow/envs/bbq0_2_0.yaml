@@ -3,7 +3,7 @@ channels:
   - conda-forge
   - defaults
 dependencies:
-  - python=3.10
+  - python=3.10.15
   - pip=23.3
   - pip:
       - betterbasequals==0.2.0
