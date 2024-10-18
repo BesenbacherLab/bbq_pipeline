@@ -10,7 +10,7 @@ Snakemake workflow for running the Better Base Quality (BBQ) tool for somatic va
 
 ## Usage
 
-The usage of this workflow is also described in the [Snakemake Workflow Catalog](https://snakemake.github.io/snakemake-workflow-catalog/?usage=carmenoroperv/bbq_pipeline). (Will be published once the repo is public)
+The usage of this workflow is also described in the [Snakemake Workflow Catalog](https://snakemake.github.io/snakemake-workflow-catalog/?usage=carmenoroperv/bbq_pipeline).
 
 ### Step 1: Install snakemake
 
@@ -43,11 +43,8 @@ git clone https://github.com/carmenoroperv/bbq_pipeline.git && cd bbq_pipeline
 #### Workflow confifuration
 To specify the parameters for running BBQ, reference genome and sample paths, modify the configuration files [`config.yaml`](https://github.com/carmenoroperv/bbq_pipeline/blob/master/config/config.yaml) and [`samples.tsv`](https://github.com/carmenoroperv/bbq_pipeline/blob/master/config/samples.tsv) according to your needs, following the explanations provided [here](https://github.com/carmenoroperv/bbq_pipeline/tree/master/config).
 
-#### BBQ installation
-The source code and instructions for installing BBQ can be found [here](https://github.com/besenbacher/BetterBaseQuals/tree/main).
-If you have not installed BBQ before running the workflow, BBQ will be installed to the working directory during the execution. 
-
-If you have already installed BBQ, you can provide a full path to the executable in the config file [`config.yaml`](https://github.com/carmenoroperv/bbq_pipeline/blob/master/config/config.yaml) by specifiying the `bbq_path` key under the `bbq/global` property. 
+#### BBQ
+The source code and instructions for running BBQ can be found on the [BBQ github page](https://github.com/besenbacher/BetterBaseQuals/tree/main).
 
 ### Step 4: Run workflow 
 
@@ -70,7 +67,7 @@ To run the workflow for a new data set, use the `--directory` flag that specifie
 snakemake --directory "path/to/new/directory/"
 ```
 
-For example, to run the workflow with the provided test data in the .test folder run: 
+To run the workflow with the provided test data in the .test folder run: 
 
 ```
 snakemake --directory ".test"
@@ -82,7 +79,7 @@ The workflow profile that specifies the details for the cluster execution will b
 snakemake --workflow-profile "path/to/workflow_profile/config.yaml"
 ```
 
-For further options for local, cluster and cloud execution, see the [docs](https://snakemake.readthedocs.io/).
+For further options for local, cluster and cloud execution, see the snakemake [docs](https://snakemake.readthedocs.io/).
 
 
 ### Step 5: Generate report (optional)
