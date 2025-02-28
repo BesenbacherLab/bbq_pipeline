@@ -35,13 +35,13 @@ conda activate snakemake
 Download and extract the repository: 
 
 ```
-git clone https://github.com/carmenoroperv/bbq_pipeline.git && cd bbq_pipeline
+git clone https://github.com/BesenbacherLab/bbq_pipeline.git && cd bbq_pipeline
 ```
 
 ### Step 3: Configure workflow and install BBQ
 
 #### Workflow confifuration
-To specify the parameters for running BBQ, reference genome and sample paths, modify the configuration files [`config.yaml`](https://github.com/carmenoroperv/bbq_pipeline/blob/master/config/config.yaml) and [`samples.tsv`](https://github.com/carmenoroperv/bbq_pipeline/blob/master/config/samples.tsv) according to your needs, following the explanations provided [here](https://github.com/carmenoroperv/bbq_pipeline/tree/master/config).
+To specify the parameters for running BBQ, reference genome and sample paths, modify the configuration files [`config.yaml`](https://github.com/carmenoroperv/bbq_pipeline/blob/master/config/config.yaml) and [`samples.tsv`](https://github.com/carmenoroperv/bbq_pipeline/blob/master/config/samples.tsv) according to your needs, following the explanations provided [here](https://github.com/BesenbacherLab/bbq_pipeline/tree/master/config).
 
 #### BBQ
 The source code and instructions for running BBQ can be found on the [BBQ github page](https://github.com/besenbacher/BetterBaseQuals/tree/main).
@@ -52,7 +52,7 @@ The source code and instructions for running BBQ can be found on the [BBQ github
 
 For cluster execution of the workflow, the [snakemake slurm executor plugin](https://snakemake.github.io/snakemake-plugin-catalog/plugins/executor/slurm.html) needs to be installed with `pip install snakemake-executor-plugin-slurm`. If the slurm plugin is not installed, the `-e` flag needs to be specified for the snakemake commands listed below. 
 
-The specifics for cluster execution should be defined in the workflow profile configuration file. An example workflow profile for slurm is provided [here](https://github.com/carmenoroperv/bbq_pipeline/tree/master/workflow/profiles/default/config.yaml). To use the example profile, adjust the snakemake command line parameters to your needs. Importantly, a cluster account is specified in the example profile as an environment variable. To set the account name as an environment variable run `export ACCOUNT_NAME=<your_account_name>` or modify the profile config file to include your account name directly.
+The specifics for cluster execution should be defined in the workflow profile configuration file. An example workflow profile for slurm is provided [here](https://github.com/BesenbacherLab/bbq_pipeline/tree/master/workflow/profiles/default/config.yaml). To use the example profile, adjust the snakemake command line parameters to your needs. Importantly, a cluster account is specified in the example profile as an environment variable. To set the account name as an environment variable run `export ACCOUNT_NAME=<your_account_name>` or modify the profile config file to include your account name directly.
 
 
 After you have activated the conda environment with snakemake, installed the slurm executor plugin and set the account name as an environment variable, you can test the workflow remote execution by performing a dry-run:
@@ -73,7 +73,7 @@ To run the workflow with the provided test data in the .test folder run:
 snakemake --directory ".test"
 ```
 
-The workflow profile that specifies the details for the cluster execution will be still automatically detected from the pipeline directory ([`workflow/profiles/default/config.yaml`](https://github.com/carmenoroperv/bbq_pipeline/blob/master/workflow/profiles/default/config.yaml)) even when the execution directory is changed. If you want to specify a new cluster execution profile as well, use the `--workflow-profile` flag: 
+The workflow profile that specifies the details for the cluster execution will be still automatically detected from the pipeline directory ([`workflow/profiles/default/config.yaml`](https://github.com/BesenbacherLab/bbq_pipeline/blob/master/workflow/profiles/default/config.yaml)) even when the execution directory is changed. If you want to specify a new cluster execution profile as well, use the `--workflow-profile` flag: 
 
 ```
 snakemake --workflow-profile "path/to/workflow_profile/config.yaml"
