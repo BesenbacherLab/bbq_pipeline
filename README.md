@@ -41,7 +41,7 @@ git clone https://github.com/BesenbacherLab/bbq_pipeline.git && cd bbq_pipeline
 ### Step 3: Configure workflow and install BBQ
 
 #### Workflow confifuration
-To specify the parameters for running BBQ, reference genome and sample paths, modify the configuration files [`config.yaml`](https://github.com/carmenoroperv/bbq_pipeline/blob/master/config/config.yaml) and [`samples.tsv`](https://github.com/carmenoroperv/bbq_pipeline/blob/master/config/samples.tsv) according to your needs, following the explanations provided [here](https://github.com/BesenbacherLab/bbq_pipeline/tree/master/config).
+To specify the parameters for running BBQ, reference genome and sample paths, modify the configuration files [`config.yaml`](https://github.com/BesenbacherLab/bbq_pipeline/blob/master/config/config.yaml) and [`samples.tsv`](https://github.com/BesenbacherLab/bbq_pipeline/blob/master/config/samples.tsv) according to your needs, following the explanations provided [here](https://github.com/BesenbacherLab/bbq_pipeline/tree/master/config).
 
 #### BBQ
 The source code and instructions for running BBQ can be found on the [BBQ github page](https://github.com/besenbacher/BetterBaseQuals/tree/main).
